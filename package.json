@@ -1,0 +1,26 @@
+{
+  "name": "blocktime-monitoring",
+  "version": "1.0.0",
+  "description": "Monitoring block time of TomoChain blockchain",
+  "main": "index.js",
+  "dependencies": {
+    "config": "^3.3.6",
+    "fs": "0.0.1-security",
+    "noti_bot": "^1.1.2",
+    "web3": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomochain/blocktime-monitoring.git"
+  },
+  "author": "NguyenNguyen (nguyenbk92@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomochain/blocktime-monitoring/issues"
+  },
+  "homepage": "https://github.com/tomochain/blocktime-monitoring#readme"
+}

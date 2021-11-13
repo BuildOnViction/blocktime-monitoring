@@ -1,0 +1,12 @@
+{
+    "rpc": "https://rpc.tomochain.com",
+    "blockTimeThreshold": 2,
+    "mongodb": "mongodb://127.0.0.1/blocktime",
+    "slack": {
+        "token": "",
+        "target": "",
+        "botname": "",
+        "boticon": ""
+    }
+    
+}
