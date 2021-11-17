@@ -40,8 +40,10 @@ const main = async () => {
                 continue
             }
             console.log(`checking block ${current}`)
+		latest = await web3.eth.getBlockNumber()
             if (current >= latest) {
                 await sleep(2000)
+		continue
             }
             previous = current - 1
 
@@ -73,7 +75,7 @@ const main = async () => {
         }
         
     } catch (err) {
-        exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`)
+       // exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`)
         console.error(`Crawler error ${err}`)
     }
 }
