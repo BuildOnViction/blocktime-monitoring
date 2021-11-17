@@ -64,17 +64,17 @@ const main = async () => {
             if (blockTime > THRESHOLD) {
                 let msg = `Block ${previous} took ${blockTime} seconds`
                 console.log(msg)
-                await notiBot.notifySlack(msg, config.get("slack.token"), config.get("slack.target"), config.get("slack.botname"), config.get("slack.boticon"))
+                await notiBot.slack(msg, config.get("slack.token"), config.get("slack.target"), config.get("slack.botname"), config.get("slack.boticon"))
 
                 //TODO: do something else to count all slow block
             }
-
+		exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`)
             current++
         }
         
     } catch (err) {
         exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`)
-        console.error(`Crawler error ${JSON.stringify(err)}`)
+        console.error(`Crawler error ${err}`)
     }
 }
 main()
