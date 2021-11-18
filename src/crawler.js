@@ -18,7 +18,7 @@ const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time))
 const getBlockTime = (previous, current) => {
     if (!previous || !current) {
         console.error(`Invalid block. previous: ${previous}. current: ${current}`)
-        return
+        process.exit(1)
     }
     return (current.timestamp - previous.timestamp)
 }
@@ -77,6 +77,7 @@ const main = async () => {
     } catch (err) {
        // exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`)
         console.error(`Crawler error ${err}`)
+	 main()
     }
 }
 main()
