@@ -61,7 +61,7 @@ const main = async () => {
       let blockTime = getBlockTime(previousBlock, currentBlock);
       if (blockTime > THRESHOLD) {
         let author = await utils.getBlockAuthor(previousBlock);
-        let msg = `Block <a href="https://tomoscan.io/block${previous}">${previous}</a> took ${blockTime} seconds. Masternode: ${
+        let msg = `Block ${previous} took ${blockTime} seconds. Masternode: ${
           masternodeName[author] ? masternodeName[author] : author
         }`;
         console.log(msg);
