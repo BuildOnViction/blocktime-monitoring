@@ -4,12 +4,12 @@
   "description": "Monitoring block time of TomoChain blockchain",
   "main": "index.js",
   "dependencies": {
+    "@ethereumjs/block": "^3.5.1",
     "config": "^3.3.6",
+    "ethereumjs-util": "^7.1.2",
     "fs": "0.0.1-security",
     "noti_bot": "^1.1.2",
-    "web3": "^1.6.0",
-    "@ethereumjs/block": "^3.5.1",
-    "ethereumjs-util": "^7.1.2"
+    "web3": "^1.6.0"
   },
   "devDependencies": {},
   "scripts": {
