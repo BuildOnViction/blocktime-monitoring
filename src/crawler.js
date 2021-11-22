@@ -35,8 +35,8 @@ const main = async () => {
 
     while (true) {
       if (!current) {
-        current = 1;
-        continue;
+	 console.error(`currentBlock is null`)
+        process.exit(1)
       }
       console.log(`checking block ${current}`);
       latest = await web3.eth.getBlockNumber();
@@ -53,7 +53,7 @@ const main = async () => {
         previousBlock = currentBlock;
         currentBlock = await web3.eth.getBlock(current);
       }
-      if (!previous || !current) {
+      if (!previous || !current || !previousBlock || !currentBlock) {
         await sleep(2000);
         continue;
       }
@@ -61,7 +61,7 @@ const main = async () => {
       let blockTime = getBlockTime(previousBlock, currentBlock);
       if (blockTime > THRESHOLD) {
         let author = await utils.getBlockAuthor(previousBlock);
-        let msg = `Block ${previous} took ${blockTime} seconds. Masternode: ${
+        let msg = `Block https://tomoscan.io/block/${previous} took ${blockTime} seconds. Masternode: ${
           masternodeName[author] ? masternodeName[author] : author
         }`;
         console.log(msg);
@@ -75,13 +75,17 @@ const main = async () => {
 
         //TODO: do something else to count all slow block
       }
+	if (current && current > 1) {
       exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`);
       current++;
+	} else {
+		process.exit(1)
+	}
     }
   } catch (err) {
     // exec(`echo ${current} > ${CURRENT_BLOCK_FILENAME}`)
     console.error(`Crawler error ${err}`);
-    main();
+    process.exit(1)
   }
 };
 main();
