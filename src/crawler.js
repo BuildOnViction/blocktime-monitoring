@@ -28,7 +28,7 @@ const main = async () => {
   try {
     latest = await web3.eth.getBlockNumber();
     try {
-      current = fs.readFileSync(CURRENT_BLOCK_FILENAME, "utf8");
+      current = await fs.readFileSync(CURRENT_BLOCK_FILENAME, "utf8");
     } catch (er) {
       current = latest;
     }
@@ -40,7 +40,7 @@ const main = async () => {
       }
       console.log(`checking block ${current}`);
       latest = await web3.eth.getBlockNumber();
-      if (current >= latest) {
+      if (!latest || current >= latest) {
         await sleep(2000);
         continue;
       }
