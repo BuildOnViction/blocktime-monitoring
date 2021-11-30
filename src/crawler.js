@@ -32,6 +32,12 @@ const main = async () => {
     } catch (er) {
       current = latest;
     }
+	if (!current) {
+		if (!latest) {
+			process.exit(1)
+		}
+		current = latest
+	}
 
     while (true) {
       if (!current) {
