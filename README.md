@@ -1,2 +1,3 @@
-# Free AI at api.airforce
-https://discord.gg/AJDsM7jtbq
+# blocktime-monitoring
+
+Monitoring block time of TomoChain blockchain
